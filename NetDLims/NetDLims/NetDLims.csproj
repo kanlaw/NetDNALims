@@ -1,0 +1,575 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\packages\CefSharp.OffScreen.49.0.1\build\CefSharp.OffScreen.props" Condition="Exists('..\..\packages\CefSharp.OffScreen.49.0.1\build\CefSharp.OffScreen.props')" />
+  <Import Project="..\..\packages\CefSharp.WinForms.49.0.1\build\CefSharp.WinForms.props" Condition="Exists('..\..\packages\CefSharp.WinForms.49.0.1\build\CefSharp.WinForms.props')" />
+  <Import Project="..\..\packages\CefSharp.Common.49.0.1\build\CefSharp.Common.props" Condition="Exists('..\..\packages\CefSharp.Common.49.0.1\build\CefSharp.Common.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{17A624C8-2439-41B2-9E89-8B8D32B93D1A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NetDLims</RootNamespace>
+    <AssemblyName>NetDLims</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;UID_I4</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;UID_I4</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>$(SolutionDir)bin\x86\Debug\</OutputPath>
+    <DefineConstants>UID_I4</DefineConstants>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>UID_I4</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;UID_I4</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;UID_I4</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <!--<Reference Include="CefSharp, Version=49.0.1.0, Culture=neutral, PublicKeyToken=40c4b6fc221f4138, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>CEF\compemnts\CefSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="CefSharp.Core, Version=49.0.1.0, Culture=neutral, PublicKeyToken=40c4b6fc221f4138, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>CEF\compemnts\CefSharp.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="CefSharp.WinForms, Version=49.0.1.0, Culture=neutral, PublicKeyToken=40c4b6fc221f4138, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>CEF\compemnts\CefSharp.WinForms.dll</HintPath>
+    </Reference>-->
+    <Reference Include="CSkin">
+      <HintPath>..\..\IMClient\Compents\CSkin.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CefDownloadHandler.cs" />
+    <Compile Include="Controls\DictEmun.cs" />
+    <Compile Include="Controls\FrmStyle.cs" />
+    <Compile Include="Controls\ImageButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\ImageComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\ImageTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\ToolTipEX\ControlPaintEx.cs" />
+    <Compile Include="Controls\ToolTipEX\GraphicsPathHelper.cs" />
+    <Compile Include="Controls\ToolTipEX\ImageDc.cs" />
+    <Compile Include="Controls\ToolTipEX\InterpolationModeGraphics.cs" />
+    <Compile Include="Controls\ToolTipEX\RegionHelper.cs" />
+    <Compile Include="Controls\ToolTipEX\RenderHelper.cs" />
+    <Compile Include="Controls\ToolTipEX\RoundStyle.cs" />
+    <Compile Include="Controls\ToolTipEX\SmoothingModeGraphics.cs" />
+    <Compile Include="Controls\ToolTipEX\TextRenderingHintGraphics.cs" />
+    <Compile Include="Controls\ToolTipEX\ToolTipColorTable.cs" />
+    <Compile Include="Controls\ToolTipEX\ToolTipEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\ToolTipEX\Win32\ClassName.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\Const\AC.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\Const\CDDS.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\Const\CDRF.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\Const\GWL.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\Const\HWND.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\Const\ICC.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\Const\LPSTR.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\Const\NM.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\Const\SWP.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\Const\TTDT.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\Const\TTF.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\Const\TTI.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\Const\TTM.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\Const\TTN.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\Const\TTS.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\Const\WM.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\Const\WS.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\Const\WS_EX.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\Enum\TRACKMOUSEEVENT_FLAGS.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\NativeMethods.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\Result.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\Struct\BLENDFUNCTION.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\Struct\INITCOMMONCONTROLSEX.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\Struct\NMCUSTOMDRAW.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\Struct\NMHDR.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\Struct\NMTTCUSTOMDRAW.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\Struct\NMTTDISPINFO.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\Struct\PAINTSTRUCT.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\Struct\POINT.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\Struct\RECT.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\Struct\TOOLINFO.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\Struct\TRACKMOUSEEVENT.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\Struct\TT_HITTESTINFO.cs" />
+    <Compile Include="Forms\BaseTemplateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\BaseTemplateForm.Designer.cs">
+      <DependentUpon>BaseTemplateForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\JsEvent.cs" />
+    <Compile Include="Forms\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sample\BoundObject.cs" />
+    <Compile Include="Sample\ExceptionTestBoundObject.cs" />
+    <Compile Include="Sample\SimpleBrowserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sample\SimpleBrowserForm.designer.cs">
+      <DependentUpon>SimpleBrowserForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sample\SubBoundObject.cs" />
+    <EmbeddedResource Include="Forms\BaseTemplateForm.resx">
+      <DependentUpon>BaseTemplateForm.cs</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <!--<EmbeddedResource Include="obj\x86\Debug\CefSharp.WinForms.Example.Minimal.SimpleBrowserForm.resources" />-->
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Sample\SimpleBrowserForm.resx">
+      <DependentUpon>SimpleBrowserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <!--<None Include="CEF\locales\am.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CEF\locales\ar.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CEF\locales\bg.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CEF\locales\bn.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CEF\locales\ca.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CEF\locales\cs.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CEF\locales\da.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CEF\locales\de.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CEF\locales\el.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CEF\locales\en-GB.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CEF\locales\en-US.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CEF\locales\es-419.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CEF\locales\es.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CEF\locales\et.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CEF\locales\fa.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CEF\locales\fi.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CEF\locales\fil.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CEF\locales\fr.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CEF\locales\gu.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CEF\locales\he.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CEF\locales\hi.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CEF\locales\hr.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CEF\locales\hu.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CEF\locales\id.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CEF\locales\it.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CEF\locales\ja.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CEF\locales\kn.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CEF\locales\ko.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CEF\locales\lt.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CEF\locales\lv.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CEF\locales\ml.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CEF\locales\mr.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CEF\locales\ms.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CEF\locales\nb.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CEF\locales\nl.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CEF\locales\pl.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CEF\locales\pt-BR.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CEF\locales\pt-PT.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CEF\locales\ro.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CEF\locales\ru.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CEF\locales\sk.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CEF\locales\sl.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CEF\locales\sr.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CEF\locales\sv.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CEF\locales\sw.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CEF\locales\ta.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CEF\locales\te.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CEF\locales\th.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CEF\locales\tr.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CEF\locales\uk.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CEF\locales\vi.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CEF\locales\zh-CN.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CEF\locales\zh-TW.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="natives_blob.bin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CEF\PepperFlash\manifest.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="cef.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="cef_100_percent.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="cef_200_percent.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="cef_extensions.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="devtools_resources.pak">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="icudtl.dat">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>-->
+    <!--<None Include="snapshot_blob.bin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>-->
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <!--<Content Include="CEF\compemnts\CefSharp.BrowserSubprocess.Core.dll" />
+    <Content Include="CEF\compemnts\CefSharp.BrowserSubprocess.exe" />
+    <Content Include="CEF\compemnts\CefSharp.Core.dll" />
+    <Content Include="CEF\compemnts\CefSharp.dll" />
+    <Content Include="CEF\compemnts\CefSharp.WinForms.dll" />-->
+    <Content Include="logo.ico" />
+    <Content Include="msvcp120.dll" />
+    <Content Include="msvcr120.dll" />
+    <Content Include="OutDLL\SmileWei.EmbeddedApp.dll" />
+    <None Include="Resources\enter-bg2_03.png" />
+    <None Include="Resources\enter-bg1_03.png" />
+    <None Include="Resources\level_03.png" />
+    <None Include="Resources\close-button-small_03.png" />
+    <None Include="Resources\shrinkage02_32.png" />
+    <None Include="Resources\Reducing-down_over_02.png" />
+    <None Include="Resources\pki-button1_normal_03.png" />
+    <None Include="Resources\enter-button1_over_03.png" />
+    <None Include="Resources\enter-button1_normal_03.png" />
+    <None Include="Resources\pki-button1_over_03.png" />
+    <None Include="Resources\pki-button1_normal_07.png" />
+    <None Include="Resources\enter-button1_over_07.png" />
+    <None Include="Resources\enter-button1_normal_07.png" />
+    <None Include="Resources\pki-button1_over_07.png" />
+    <None Include="Resources\Head-portrait1_03.png" />
+    <None Include="Resources\enter-bg1_07.png" />
+    <None Include="Resources\title-block_01.png" />
+    <None Include="Resources\max_over_02.png" />
+    <None Include="Resources\line-blue_02.png" />
+    <None Include="Resources\max_down_02.png" />
+    <None Include="Resources\max_normal_02.png" />
+    <None Include="Resources\Reducing-down_normal_02.png" />
+    <None Include="Resources\Reducing-down_down_02.png" />
+    <None Include="Resources\the-results-in-the-queue_11.png" />
+    <None Include="Resources\1.png" />
+    <None Include="Resources\Actual-combat-coordination_normal_02.png" />
+    <None Include="Resources\Actual-combat-coordination_over_02.png" />
+    <None Include="Resources\bg.png" />
+    <None Include="Resources\bg_01.png" />
+    <None Include="Resources\clock_03.png" />
+    <None Include="Resources\close-lims-down_06.png" />
+    <None Include="Resources\close-lims-normal_06.png" />
+    <None Include="Resources\close_down_02.png" />
+    <None Include="Resources\close_normal_02.png" />
+    <None Include="Resources\close_over_02.png" />
+    <None Include="Resources\close-lims-over_06.png" />
+    <None Include="Resources\Construction-guide_normal_02.png" />
+    <None Include="Resources\Construction-guide_over_02.png" />
+    <None Include="Resources\dna.ico" />
+    <None Include="Resources\DNAniu-Bottom.png" />
+    <None Include="Resources\down-82.png" />
+    <None Include="Resources\home-page_normal_02.png" />
+    <None Include="Resources\home-page_over_02.png" />
+    <None Include="Resources\info-grey.png" />
+    <None Include="Resources\Laboratory-information-management-system-bg.png" />
+    <None Include="Resources\Laboratory-information-management-system-bg1.png" />
+    <None Include="Resources\left-82.png" />
+    <None Include="Resources\minimize_down_02.png" />
+    <None Include="Resources\minimize_normal_02.png" />
+    <None Include="Resources\minimize_over_02.png" />
+    <None Include="Resources\right-82.png" />
+    <None Include="Resources\Science-technology-innovation_normal_02.png" />
+    <None Include="Resources\Science-technology-innovation_over_02.png" />
+    <None Include="Resources\Study-communication_normal_02.png" />
+    <None Include="Resources\Study-communication_over_02.png" />
+    <None Include="Resources\System-management_normal_02.png" />
+    <None Include="Resources\System-management_over_02.png" />
+    <None Include="Resources\Technical-guidance_normal_02.png" />
+    <None Include="Resources\Technical-guidance_over_02.png" />
+    <!--<None Include="d3dcompiler_43.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="d3dcompiler_47.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="libcef.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="libEGL.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="libGLESv2.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>-->
+    <!--<Content Include="CEF\PepperFlash\pepflashplayer.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="widevinecdmadapter.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>-->
+    <None Include="Resources\nav_right_green.png" />
+    <None Include="Resources\nav_plain_red.png" />
+    <None Include="Resources\nav_plain_green.png" />
+    <None Include="Resources\nav_left_green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 4.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <!--<Folder Include="CEF\res\" />-->
+    <Folder Include="Compents\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\Common.csproj">
+      <Project>{3feca61e-5ee0-4c1c-87b7-f561e52f8b4f}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\IMClient\IMClient.csproj">
+      <Project>{7ca80403-f590-4dd6-b481-64219093f4c9}</Project>
+      <Name>IMClient</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\..\packages\cef.redist.x64.3.2623.1401\build\cef.redist.x64.targets" Condition="Exists('..\..\packages\cef.redist.x64.3.2623.1401\build\cef.redist.x64.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>此项目引用这台计算机上缺少的 NuGet 程序包。使用 NuGet 程序包还原可下载这些程序包。有关详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\packages\cef.redist.x64.3.2623.1401\build\cef.redist.x64.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\cef.redist.x64.3.2623.1401\build\cef.redist.x64.targets'))" />
+    <Error Condition="!Exists('..\..\packages\cef.redist.x86.3.2623.1401\build\cef.redist.x86.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\cef.redist.x86.3.2623.1401\build\cef.redist.x86.targets'))" />
+    <Error Condition="!Exists('..\..\packages\CefSharp.Common.49.0.1\build\CefSharp.Common.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\CefSharp.Common.49.0.1\build\CefSharp.Common.props'))" />
+    <Error Condition="!Exists('..\..\packages\CefSharp.Common.49.0.1\build\CefSharp.Common.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\CefSharp.Common.49.0.1\build\CefSharp.Common.targets'))" />
+    <Error Condition="!Exists('..\..\packages\CefSharp.WinForms.49.0.1\build\CefSharp.WinForms.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\CefSharp.WinForms.49.0.1\build\CefSharp.WinForms.props'))" />
+    <Error Condition="!Exists('..\..\packages\CefSharp.OffScreen.49.0.1\build\CefSharp.OffScreen.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\CefSharp.OffScreen.49.0.1\build\CefSharp.OffScreen.props'))" />
+  </Target>
+  <Import Project="..\..\packages\cef.redist.x86.3.2623.1401\build\cef.redist.x86.targets" Condition="Exists('..\..\packages\cef.redist.x86.3.2623.1401\build\cef.redist.x86.targets')" />
+  <Import Project="..\..\packages\CefSharp.Common.49.0.1\build\CefSharp.Common.targets" Condition="Exists('..\..\packages\CefSharp.Common.49.0.1\build\CefSharp.Common.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

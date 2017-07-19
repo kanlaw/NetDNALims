@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7C7C0D8E-4595-42E4-810D-87F2DF1D7AE6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>JustLib</RootNamespace>
+    <AssemblyName>JustLib</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CSkin, Version=12.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Dall\CSkin.dll</HintPath>
+    </Reference>
+    <Reference Include="DataRabbit, Version=1.0.0.0, Culture=neutral, PublicKeyToken=ba1538489f75683e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Dall\DataRabbit.dll</HintPath>
+    </Reference>
+    <Reference Include="ESBasic, Version=2.0.0.0, Culture=neutral, PublicKeyToken=ba1538489f75683e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Dall\ESBasic.dll</HintPath>
+    </Reference>
+    <Reference Include="ESFramework, Version=6.2.0.0, Culture=neutral, PublicKeyToken=ba1538489f75683e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Dall\ESFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Matrix">
+      <HintPath>..\IMClient\Compents\Matrix.dll</HintPath>
+    </Reference>
+    <Reference Include="OMCS, Version=4.5.0.0, Culture=neutral, PublicKeyToken=ba1538489f75683e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Dall\OMCS.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Caches\BaseGlobalUserCache.cs" />
+    <Compile Include="Caches\UserLocalPersistence.cs" />
+    <Compile Include="Controls\ChatBox\ChatBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\ChatBox\GifBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\ChatBox\ImageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\ChatBox\ImageForm.designer.cs">
+      <DependentUpon>ImageForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ChatBox\Internals\CHARRANGE.cs" />
+    <Compile Include="Controls\ChatBox\Internals\CLIPFORMAT.cs" />
+    <Compile Include="Controls\ChatBox\Internals\COMRECT.cs" />
+    <Compile Include="Controls\ChatBox\Internals\DVASPECT.cs" />
+    <Compile Include="Controls\ChatBox\Internals\FORMATETC.cs" />
+    <Compile Include="Controls\ChatBox\Internals\GETCLIPBOARDDATAFLAGS.cs" />
+    <Compile Include="Controls\ChatBox\Internals\GETOBJECTOPTIONS.cs" />
+    <Compile Include="Controls\ChatBox\Internals\IAdviseSink.cs" />
+    <Compile Include="Controls\ChatBox\Internals\IDataObject.cs" />
+    <Compile Include="Controls\ChatBox\Internals\IEnumFORMATETC.cs" />
+    <Compile Include="Controls\ChatBox\Internals\IEnumOLEVERB.cs" />
+    <Compile Include="Controls\ChatBox\Internals\IEnumSTATDATA.cs" />
+    <Compile Include="Controls\ChatBox\Internals\IEnumSTATSTG.cs" />
+    <Compile Include="Controls\ChatBox\Internals\ILockBytes.cs" />
+    <Compile Include="Controls\ChatBox\Internals\IOleClientSite.cs" />
+    <Compile Include="Controls\ChatBox\Internals\IOleContainer.cs" />
+    <Compile Include="Controls\ChatBox\Internals\IOleObject.cs" />
+    <Compile Include="Controls\ChatBox\Internals\IRichEditOle.cs" />
+    <Compile Include="Controls\ChatBox\Internals\ISequentialStream.cs" />
+    <Compile Include="Controls\ChatBox\Internals\IStorge.cs" />
+    <Compile Include="Controls\ChatBox\Internals\IStream.cs" />
+    <Compile Include="Controls\ChatBox\Internals\NativeMethods.cs" />
+    <Compile Include="Controls\ChatBox\Internals\REOBJECT.cs" />
+    <Compile Include="Controls\ChatBox\Internals\REOOBJECTFLAGS.cs" />
+    <Compile Include="Controls\ChatBox\Internals\RichEditOle.cs" />
+    <Compile Include="Controls\ChatBox\Internals\STATDATA.cs" />
+    <Compile Include="Controls\ChatBox\Internals\STGM.cs" />
+    <Compile Include="Controls\ChatBox\Internals\STGMEDIUM.cs" />
+    <Compile Include="Controls\ChatBox\Internals\tagLOGPALETTE.cs" />
+    <Compile Include="Controls\ChatBox\Internals\tagOLEVERB.cs" />
+    <Compile Include="Controls\ChatBox\Internals\TYMED.cs" />
+    <Compile Include="Controls\DecibelDisplayer\FourierTransformer.cs" />
+    <Compile Include="Entity.cs" />
+    <Compile Include="JustHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="UnitViews\GroupListBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UnitViews\GroupListBox.designer.cs">
+      <DependentUpon>GroupListBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UnitViews\OrgView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UnitViews\OrgView.designer.cs">
+      <DependentUpon>OrgView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UnitViews\RecentListBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UnitViews\RecentListBox.designer.cs">
+      <DependentUpon>RecentListBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UnitViews\UserListBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UnitViews\UserListBox.designer.cs">
+      <DependentUpon>UserListBox.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Dall\CSkin.dll" />
+    <Content Include="Dall\ESBasic.dll" />
+    <Content Include="Dall\ESBasic.xml" />
+    <Content Include="Dall\ESFramework.Boost.dll" />
+    <Content Include="Dall\ESFramework.Boost.xml" />
+    <Content Include="Dall\ESFramework.dll" />
+    <Content Include="Dall\ESFramework.xml" />
+    <None Include="Resources\Folder.png" />
+    <None Include="Resources\up1.png" />
+    <None Include="Resources\timg .jpg" />
+    <None Include="Resources\refresh.png" />
+    <None Include="Resources\paste.png" />
+    <None Include="Resources\Head-portrait02-index_32.png" />
+    <None Include="Resources\good_06.png" />
+    <None Include="Resources\Go.bmp" />
+    <None Include="Resources\folder_new.png" />
+    <None Include="Resources\edit-undo.png" />
+    <None Include="Resources\edit-redo.png" />
+    <None Include="Resources\down1.png" />
+    <None Include="Resources\cut1.png" />
+    <None Include="Resources\copy1.png" />
+    <None Include="Resources\AV_Accept.png" />
+    <None Include="Resources\app_icon_401.png" />
+    <None Include="Resources\20120818113914742_easyicon_cn_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Controls\ChatBox\ChatBox.resx">
+      <DependentUpon>ChatBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ChatBox\GifBox.resx">
+      <DependentUpon>GifBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ChatBox\ImageForm.resx">
+      <DependentUpon>ImageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnitViews\GroupListBox.resx">
+      <DependentUpon>GroupListBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnitViews\OrgView.resx">
+      <DependentUpon>OrgView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnitViews\RecentListBox.resx">
+      <DependentUpon>RecentListBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnitViews\UserListBox.resx">
+      <DependentUpon>UserListBox.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

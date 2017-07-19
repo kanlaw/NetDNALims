@@ -1,0 +1,850 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\CefSharp.WinForms.49.0.1\build\CefSharp.WinForms.props" Condition="Exists('..\packages\CefSharp.WinForms.49.0.1\build\CefSharp.WinForms.props')" />
+  <Import Project="..\packages\CefSharp.Common.49.0.1\build\CefSharp.Common.props" Condition="Exists('..\packages\CefSharp.Common.49.0.1\build\CefSharp.Common.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7CA80403-F590-4DD6-B481-64219093F4C9}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IMClient</RootNamespace>
+    <AssemblyName>IMClient</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;UID_I4</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;UID_I4</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>$(SolutionDir)bin\x86\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;UID_I4</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;UID_I4</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;UID_I4</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;UID_I4</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CSkin, Version=12.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Compents\CSkin.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net40\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ESBasic">
+      <HintPath>..\JustLib\Dall\ESBasic.dll</HintPath>
+    </Reference>
+    <Reference Include="ESFramework, Version=6.2.0.0, Culture=neutral, PublicKeyToken=ba1538489f75683e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\JustLib\Dall\ESFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Matrix, Version=2.0.0.21, Culture=neutral, PublicKeyToken=0120f1df71ff86bc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Compents\Matrix.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio, Version=1.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NAudio.1.8.0\lib\net35\NAudio.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.0.3.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\user\Documents\Visual Studio 2015\Projects\WindowsFormsApplication2\WindowsFormsApplication2\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="OMCS, Version=4.5.0.0, Culture=neutral, PublicKeyToken=ba1538489f75683e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Compents\OMCS.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.105.2.3\lib\net4\RestSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite, Version=1.0.105.2, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Core.1.0.105.2\lib\net40\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Design" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controls\Base\FrameBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\Base\FrameBase.Designer.cs">
+      <DependentUpon>FrameBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CustomScrollbar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Des3Encryption.cs" />
+    <Compile Include="Controls\DictEmun.cs" />
+    <Compile Include="Controls\FrmStyle.cs" />
+    <Compile Include="Controls\ImageButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\ImageComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\ImageInfo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\ImageTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\ItemLineColumn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\ItemDataTable.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\ItemBase.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\ItemCheckBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\ItemInfo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\ItemInfo_SelfNews.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\ItemLine.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\ItemTitle.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\ItemTitle_Button.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\ItemUploadFile.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\MyScroll.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\MyScroll.Designer.cs">
+      <DependentUpon>MyScroll.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\QCTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\QCTextBox.Designer.cs">
+      <DependentUpon>QCTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\StaticClass.cs" />
+    <Compile Include="Controls\SystemSettings.cs" />
+    <Compile Include="Controls\Tools\FrmMsg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\Tools\FrmMsg.Designer.cs">
+      <DependentUpon>FrmMsg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ToolTipEX\ControlPaintEx.cs" />
+    <Compile Include="Controls\ToolTipEX\GraphicsPathHelper.cs" />
+    <Compile Include="Controls\ToolTipEX\ImageDc.cs" />
+    <Compile Include="Controls\ToolTipEX\InterpolationModeGraphics.cs" />
+    <Compile Include="Controls\ToolTipEX\RegionHelper.cs" />
+    <Compile Include="Controls\ToolTipEX\RenderHelper.cs" />
+    <Compile Include="Controls\ToolTipEX\RoundStyle.cs" />
+    <Compile Include="Controls\ToolTipEX\SmoothingModeGraphics.cs" />
+    <Compile Include="Controls\ToolTipEX\TextRenderingHintGraphics.cs" />
+    <Compile Include="Controls\ToolTipEX\ToolTipColorTable.cs" />
+    <Compile Include="Controls\ToolTipEX\ToolTipEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\ToolTipEX\Win32\ClassName.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\Const\AC.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\Const\CDDS.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\Const\CDRF.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\Const\GWL.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\Const\HWND.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\Const\ICC.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\Const\LPSTR.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\Const\NM.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\Const\SWP.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\Const\TTDT.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\Const\TTF.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\Const\TTI.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\Const\TTM.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\Const\TTN.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\Const\TTS.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\Const\WM.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\Const\WS.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\Const\WS_EX.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\Enum\TRACKMOUSEEVENT_FLAGS.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\NativeMethods.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\Result.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\Struct\BLENDFUNCTION.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\Struct\INITCOMMONCONTROLSEX.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\Struct\NMCUSTOMDRAW.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\Struct\NMHDR.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\Struct\NMTTCUSTOMDRAW.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\Struct\NMTTDISPINFO.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\Struct\PAINTSTRUCT.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\Struct\POINT.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\Struct\RECT.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\Struct\TOOLINFO.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\Struct\TRACKMOUSEEVENT.cs" />
+    <Compile Include="Controls\ToolTipEX\Win32\Struct\TT_HITTESTINFO.cs" />
+    <Compile Include="FileProgressBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FileProgressBar.Designer.cs">
+      <DependentUpon>FileProgressBar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IMForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IMForm.Designer.cs">
+      <DependentUpon>IMForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Logic\addUser.cs" />
+    <Compile Include="Logic\AnimateImage.cs" />
+    <Compile Include="Logic\Chat.cs" />
+    <Compile Include="Logic\Class1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Logic\CommonTool\FileCommon.cs" />
+    <Compile Include="Logic\CommonTool\MainFormCommon.cs" />
+    <Compile Include="Logic\CommonTool\RestHelper.cs" />
+    <Compile Include="Logic\Contorl\ColClass.cs" />
+    <Compile Include="Logic\FileClass.cs" />
+    <Compile Include="Logic\FileUpLoadController.cs" />
+    <Compile Include="Logic\gif\AnimatedGifEncoder.cs" />
+    <Compile Include="Logic\gif\LZWEncoder.cs" />
+    <Compile Include="Logic\gif\NeuQuant.cs" />
+    <Compile Include="Logic\CommonTool\Common.cs" />
+    <Compile Include="Logic\CommonTool\ChatCommon.cs" />
+    <Compile Include="Logic\EnumClass.cs" />
+    <Compile Include="Logic\CommonTool\SystemCommon.cs" />
+    <Compile Include="Logic\IDataTable\SpecialContent.cs" />
+    <Compile Include="Logic\IDataTable\SpecialFont.cs" />
+    <Compile Include="Logic\Meeting\MeetingLogic.cs" />
+    <Compile Include="Logic\MenuColorTable.cs" />
+    <Compile Include="Logic\RecentLink.cs" />
+    <Compile Include="Logic\RegionHelper.cs" />
+    <Compile Include="Logic\Sql\SqlLiteHelper.cs" />
+    <Compile Include="Logic\SysParams_Image.cs" />
+    <Compile Include="Logic\TempFile.cs" />
+    <Compile Include="Logic\ToolMenuEx\MenuColorTable.cs" />
+    <Compile Include="Logic\ToolMenuEx\RegionHelper.cs" />
+    <Compile Include="Logic\ToolMenuEx\ToolStripRendererEx.cs" />
+    <Compile Include="Logic\ToolStripRendererEx.cs" />
+    <Compile Include="Logic\WinApi.cs" />
+    <Compile Include="Native\Gdi32.cs" />
+    <Compile Include="Native\Native.cs" />
+    <Compile Include="Native\User32.cs" />
+    <Compile Include="Native\Win32Api.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Logic\SysParams_Chat.cs" />
+    <Compile Include="Web References\WBS_TalkHistory\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="XMPP\Forms\meeting\MeetingPWD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="XMPP\Forms\meeting\MeetingPWD.Designer.cs">
+      <DependentUpon>MeetingPWD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="XMPP\Forms\meeting\MeetingListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="XMPP\Forms\meeting\MeetingListForm.Designer.cs">
+      <DependentUpon>MeetingListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="XMPP\Forms\UserSearch\EditCatelogNameForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="XMPP\Forms\UserSearch\EditCatelogNameForm.Designer.cs">
+      <DependentUpon>EditCatelogNameForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="XMPP\Forms\UserSearch\AddUserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="XMPP\Forms\UserSearch\AddUserForm.Designer.cs">
+      <DependentUpon>AddUserForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="XMPP\Forms\Chat\ChatFormForWeb.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="XMPP\Forms\Chat\ChatFormForWeb.Designer.cs">
+      <DependentUpon>ChatFormForWeb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="XMPP\Forms\Chat\ChatForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="XMPP\Forms\Chat\ChatForm.Designer.cs">
+      <DependentUpon>ChatForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="XMPP\Forms\meeting\CreateMeetingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="XMPP\Forms\meeting\CreateMeetingForm.Designer.cs">
+      <DependentUpon>CreateMeetingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="XMPP\Forms\Chat\HistoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="XMPP\Forms\Chat\HistoryForm.Designer.cs">
+      <DependentUpon>HistoryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="XMPP\Forms\ImgForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="XMPP\Forms\ImgForm.Designer.cs">
+      <DependentUpon>ImgForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="XMPP\Forms\meeting\MeetingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="XMPP\Forms\meeting\MeetingForm.Designer.cs">
+      <DependentUpon>MeetingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="XMPP\Forms\PaintForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="XMPP\Forms\PaintForm.designer.cs">
+      <DependentUpon>PaintForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="XMPP\Forms\RecordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="XMPP\Forms\RecordForm.Designer.cs">
+      <DependentUpon>RecordForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Logic\SysParams.cs" />
+    <Compile Include="XMPP\Forms\PaintForm2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="XMPP\Forms\PaintForm2.Designer.cs">
+      <DependentUpon>PaintForm2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="XMPP\Forms\UserSearch\UserListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="XMPP\Forms\UserSearch\UserListForm.Designer.cs">
+      <DependentUpon>UserListForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Controls\Base\FrameBase.resx">
+      <DependentUpon>FrameBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ItemUploadFile.resx">
+      <DependentUpon>ItemUploadFile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\MyScroll.resx">
+      <DependentUpon>MyScroll.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Tools\FrmMsg.resx">
+      <DependentUpon>FrmMsg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FileProgressBar.resx">
+      <DependentUpon>FileProgressBar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IMForm.resx">
+      <DependentUpon>IMForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="XMPP\Forms\meeting\CreateMeetingForm.resx">
+      <DependentUpon>CreateMeetingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XMPP\Forms\meeting\MeetingPWD.resx">
+      <DependentUpon>MeetingPWD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XMPP\Forms\meeting\MeetingListForm.resx">
+      <DependentUpon>MeetingListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XMPP\Forms\UserSearch\EditCatelogNameForm.resx">
+      <DependentUpon>EditCatelogNameForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XMPP\Forms\UserSearch\AddUserForm.resx">
+      <DependentUpon>AddUserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XMPP\Forms\Chat\ChatFormForWeb.resx">
+      <DependentUpon>ChatFormForWeb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XMPP\Forms\Chat\ChatForm.resx">
+      <DependentUpon>ChatForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XMPP\Forms\Chat\HistoryForm.resx">
+      <DependentUpon>HistoryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XMPP\Forms\ImgForm.resx">
+      <DependentUpon>ImgForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XMPP\Forms\meeting\MeetingForm.resx">
+      <DependentUpon>MeetingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XMPP\Forms\PaintForm.resx">
+      <DependentUpon>PaintForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XMPP\Forms\PaintForm2.resx">
+      <DependentUpon>PaintForm2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XMPP\Forms\RecordForm.resx">
+      <DependentUpon>RecordForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XMPP\Forms\UserSearch\UserListForm.resx">
+      <DependentUpon>UserListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="ClassDiagram1.cd" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="Web References\WBS_TalkHistory\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\WBS_TalkHistory\WBS_TalkHistory.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Compents\CSkin.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Compents\Sql\FileOperation.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Compents\Matrix.dll" />
+    <Content Include="Compents\Newtonsoft.Json.dll" />
+    <Content Include="Compents\OMCS.dll" />
+    <Content Include="Compents\Sql\recent.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="htm\css\meetingCss.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="htm\css\talkCss.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="htm\js\jquery-1.9.1.min.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="htm\js\meeting.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="htm\js\talkJs.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="htm\meetingHistory_Actor.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="htm\meetingHistory.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="htm\Source\default\head\default.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="htm\Source\default\sysImage\bmp.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="htm\Source\default\sysImage\excel-im-ico_03_03.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="htm\Source\default\sysImage\jpg.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="htm\Source\default\sysImage\png.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="htm\Source\default\sysImage\ppt-im-ico_03_03.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="htm\Source\default\sysImage\txt.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="htm\Source\default\sysImage\excel-im-ico_03.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="htm\Source\default\sysImage\failure_small.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="htm\Source\default\sysImage\play01.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="htm\Source\default\sysImage\ppt-im-ico_03.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="htm\Source\default\sysImage\stop01.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="htm\Source\default\sysImage\tick_small_03.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="htm\Source\default\sysImage\unknown-im-ico_03.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="htm\Source\default\sysImage\unknown-im-ico_03_03.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="htm\Source\default\sysImage\voice.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="htm\Source\default\sysImage\warm_small.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="htm\Source\default\sysImage\word-im-ico_03.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="htm\Source\default\sysImage\word-im-ico_03_03.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="htm\Source\default\sysImage\实战协同-跨区域案件实战协同.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="htm\talkHistory.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="logo.ico" />
+    <None Include="Resources\close-meeting-ico_03.png" />
+    <None Include="Resources\ok_normal_03.png" />
+    <None Include="Resources\tok_over_03.png" />
+    <None Include="Resources\arrow-red_03.png" />
+    <None Include="Resources\chat_im01-bg02_03.png" />
+    <None Include="Resources\chat_im01-bg_03.png" />
+    <None Include="Resources\chat_im01-bg03_03.png" />
+    <None Include="Resources\chat-bg_03.png" />
+    <None Include="Resources\scroll-bar02-middle_03.png" />
+    <None Include="Resources\scroll-bar02-down_03.png" />
+    <None Include="Resources\scroll-bar02-up_03.png" />
+    <None Include="Resources\scroll-bar-down_03.png" />
+    <None Include="Resources\add.png" />
+    <None Include="Resources\scroll-bar_03.png" />
+    <None Include="Resources\scroll-bar-up_03.png" />
+    <None Include="Resources\enter-bg1_03.png" />
+    <None Include="Resources\Add-user_over_03.png" />
+    <None Include="Resources\Add-user_normal_03.png" />
+    <None Include="Resources\next-step_normal_03.png" />
+    <None Include="Resources\cancel02-over_03.png" />
+    <None Include="Resources\cancel02-normal_03.png" />
+    <None Include="Resources\next-step_over_03.png" />
+    <None Include="Resources\Refuse-over_03.png" />
+    <None Include="Resources\Refuse-normal_03.png" />
+    <None Include="Resources\agree-over_03.png" />
+    <None Include="Resources\agree-normal_03.png" />
+    <None Include="Resources\add-Users_normal_03.png" />
+    <None Include="Resources\add-Users_down_03.png" />
+    <None Include="Resources\add-Users_over_03.png" />
+    <None Include="Resources\Invite-friends_over_03.png" />
+    <None Include="Resources\Invite-friends_normal_03.png" />
+    <None Include="Resources\send-button_over_03.png" />
+    <None Include="Resources\send-button_normal_03.png" />
+    <None Include="Resources\vote-button_over_03.png" />
+    <None Include="Resources\vote-button_normal_03.png" />
+    <None Include="Resources\check-box-yes_over2.png" />
+    <None Include="Resources\check-box-yes_over1.png" />
+    <None Include="Resources\check-box-yes_over.png" />
+    <None Include="Resources\check-box-yes.png" />
+    <None Include="Resources\check-box-no_over3.png" />
+    <None Include="Resources\check-box-no_over2.png" />
+    <None Include="Resources\check-box-no_over1.png" />
+    <None Include="Resources\check-box-no_over.png" />
+    <None Include="Resources\check-box-yes_over3.png" />
+    <None Include="Resources\check-box-no.png" />
+    <None Include="Web References\WBS_TalkHistory\WBS_TalkHistory.disco" />
+    <None Include="Resources\transmission-closed-small_03.png" />
+    <None Include="Resources\transmission-send-small_03.png" />
+    <None Include="Resources\stop-record_over_03.png" />
+    <None Include="Resources\stop-record_normal_03.png" />
+    <None Include="Resources\stop-record_grey_03.png" />
+    <None Include="Resources\start-record_over_03.png" />
+    <None Include="Resources\start-record_normal_03.png" />
+    <None Include="Resources\record_over_03.png" />
+    <None Include="Resources\record_normal_03.png" />
+    <None Include="Resources\play-record_over_03.png" />
+    <None Include="Resources\play-record_normal_03.png" />
+    <None Include="Resources\play-record_grey_03.png" />
+    <None Include="Resources\stop01.png" />
+    <None Include="Resources\play01.png" />
+    <None Include="Resources\tablets-close_normal_03.png" />
+    <None Include="Resources\complete-tablets_over_07.png" />
+    <None Include="Resources\complete-tablets_normal_07.png" />
+    <None Include="Resources\clear_over_03.png" />
+    <None Include="Resources\clear_normal_03.png" />
+    <None Include="Resources\cancel-tablets_over_07.png" />
+    <None Include="Resources\cancel-tablets_normal_07.png" />
+    <None Include="Resources\tablets-close_over_03.png" />
+    <None Include="Resources\jitter-im_over_03.png" />
+    <None Include="Resources\jitter-im_normal_03.png" />
+    <None Include="Resources\handwritten-im_over_03.png" />
+    <None Include="Resources\handwritten-im_normal_03.png" />
+    <None Include="Resources\close-icon01_normal_03.png" />
+    <None Include="Resources\close-icon01_down_03.png" />
+    <None Include="Resources\close-icon01_over_03.png" />
+    <None Include="Resources\Personal-workbench_down_03.png" />
+    <None Include="Resources\Personal-workbench_over_03.png" />
+    <None Include="Resources\Personal-workbench_normal_03.png" />
+    <None Include="Resources\normal_group_40.png" />
+    <None Include="Resources\None64.ico" />
+    <None Include="Resources\button-38.png" />
+    <None Include="Resources\button-37.png" />
+    <None Include="Resources\button-36.png" />
+    <None Include="Resources\button-45.png" />
+    <None Include="Resources\button-44.png" />
+    <None Include="Resources\button-43.png" />
+    <None Include="Resources\button-42.png" />
+    <None Include="Resources\button-41.png" />
+    <None Include="Resources\button-40.png" />
+    <None Include="Resources\button-39.png" />
+    <None Include="Resources\minimize_over_02.png" />
+    <None Include="Resources\minimize_normal_02.png" />
+    <None Include="Resources\minimize_down_02.png" />
+    <None Include="Resources\close_over_02.png" />
+    <None Include="Resources\close_normal_02.png" />
+    <None Include="Resources\close_down_02.png" />
+    <None Include="Resources\1.png" />
+    <None Include="Resources\other-im_normal_07.png" />
+    <None Include="Resources\other-im_over_03.png" />
+    <None Include="Resources\warm-red_07.png" />
+    <None Include="Resources\right-green_07.png" />
+    <None Include="Resources\select-yellow_07.png" />
+    <None Include="Resources\info-blue_07.png" />
+    <None Include="Resources\close-button-small_03.png" />
+    <None Include="Resources\yes-button_over_03.png" />
+    <None Include="Resources\no-button_over_03.png" />
+    <None Include="Resources\no-button_normal_03.png" />
+    <None Include="Resources\box-small_03.png" />
+    <None Include="Resources\yes-button_normal_03.png" />
+    <None Include="Resources\Reducing-down_over_02.png" />
+    <None Include="Resources\pki-button1_over_03.png" />
+    <None Include="Resources\enter-button1_over_03.png" />
+    <None Include="Resources\pki-button1_normal_03.png" />
+    <None Include="Resources\enter-button1_normal_03.png" />
+    <None Include="Resources\title-block_01.png" />
+    <None Include="Resources\Reducing-down_down_02.png" />
+    <None Include="Resources\max_over_02.png" />
+    <None Include="Resources\max_normal_02.png" />
+    <None Include="Resources\Reducing-down_normal_02.png" />
+    <None Include="Resources\max_down_02.png" />
+    <None Include="Resources\line-blue_02.png" />
+    <None Include="Resources\word-im_normal_07.png" />
+    <None Include="Resources\voice-im_over_03.png" />
+    <None Include="Resources\voice-im_normal_07.png" />
+    <None Include="Resources\video-im_over_03.png" />
+    <None Include="Resources\video-im_normal_07.png" />
+    <None Include="Resources\screenshots-im_over_03.png" />
+    <None Include="Resources\screenshots-im_normal_07.png" />
+    <None Include="Resources\picture-im_over_03.png" />
+    <None Include="Resources\picture-im_normal_07.png" />
+    <None Include="Resources\file-im_over_03.png" />
+    <None Include="Resources\file-im_normal_07.png" />
+    <None Include="Resources\dialogue-im_over_03.png" />
+    <None Include="Resources\dialogue-im_normal_07.png" />
+    <None Include="Resources\word-im_over_03.png" />
+    <None Include="Resources\search-blue-small1_normal_03.png" />
+    <None Include="Resources\search-blue-small1_over_03.png" />
+    <None Include="Resources\uparrow.png" />
+    <None Include="Resources\ThumbTop.png" />
+    <None Include="Resources\ThumbSpanTop.png" />
+    <None Include="Resources\ThumbSpanBottom.png" />
+    <None Include="Resources\ThumbMiddle.png" />
+    <None Include="Resources\ThumbBottom.png" />
+    <None Include="Resources\downarrow.png" />
+    <None Include="Resources\Head-portrait02-index_32.png" />
+    <None Include="Resources\shrinkage02_32.png" />
+    <None Include="Resources\shrinkage01_32.png" />
+    <None Include="Resources\address-book_normal_15.png" />
+    <None Include="Resources\address-book_down_15.png" />
+    <None Include="Resources\message_over_09.png" />
+    <None Include="Resources\message_normal_09.png" />
+    <None Include="Resources\message_down_09.png" />
+    <None Include="Resources\meeting_over_14.png" />
+    <None Include="Resources\meeting_normal_14.png" />
+    <None Include="Resources\meeting_down_14.png" />
+    <None Include="Resources\email_over_13.png" />
+    <None Include="Resources\email_normal_13.png" />
+    <None Include="Resources\email_down_13.png" />
+    <None Include="Resources\address-book_over_15.png" />
+    <None Include="Resources\Close_over.png" />
+    <None Include="Resources\Close_normal.png" />
+    <None Include="Resources\Close_down.png" />
+    <None Include="Resources\3Confirmation_down.png" />
+    <None Include="Resources\yes-button-grey_over.png" />
+    <None Include="Resources\yes-button-grey_normal.png" />
+    <None Include="Resources\no-button-grey_over.png" />
+    <None Include="Resources\no-button-grey_normal.png" />
+    <None Include="Resources\exit-button-grey_over.png" />
+    <None Include="Resources\exit-button-grey_normal.png" />
+    <None Include="Resources\determine-button-grey_over.png" />
+    <None Include="Resources\determine-button-grey_normal.png" />
+    <None Include="Resources\cancel-button-grey_over.png" />
+    <None Include="Resources\cancel-button-grey_normal.png" />
+    <None Include="Resources\analy-result-small.png" />
+    <None Include="Resources\right-82.png" />
+    <None Include="Resources\left-82.png" />
+    <None Include="Resources\info-grey.png" />
+    <None Include="Resources\down-82.png" />
+    <None Include="Resources\DNAniu-Bottom.png" />
+    <None Include="Resources\wrong-red.png" />
+    <None Include="Resources\select-yellow.png" />
+    <None Include="Resources\right-green.png" />
+    <None Include="Resources\info-blue.png" />
+    <None Include="Resources\dna.ico" />
+    <None Include="Resources\Triangle_more.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CaptureImageTool\CaptureImageTool.csproj">
+      <Project>{13e62362-5d00-418f-83ff-99b2699746d7}</Project>
+      <Name>CaptureImageTool</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{3feca61e-5ee0-4c1c-87b7-f561e52f8b4f}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CustomControls\CustomControls.csproj">
+      <Project>{5B85E2D7-2005-4496-B5D7-59C68A1EC91D}</Project>
+      <Name>CustomControls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Entity\Entity.csproj">
+      <Project>{01caa527-3191-45ee-b28b-3faa8dedc69a}</Project>
+      <Name>Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IMCore\IMCore.csproj">
+      <Project>{d8945bc9-53a7-41b2-bdee-96bb67d2edad}</Project>
+      <Name>IMCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JustLib\JustLib.csproj">
+      <Project>{7c7c0d8e-4595-42e4-810d-87f2df1d7ae6}</Project>
+      <Name>JustLib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="htm\Source\chengle\" />
+    <Folder Include="XMPP\Controls\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://localhost:1111/WEBSERVICE/WBS_TalkHistory.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\WBS_TalkHistory\</RelPath>
+      <UpdateFromURL>http://localhost:1111/WEBSERVICE/WBS_TalkHistory.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>IMClient_WBS_TalkHistory_WBS_TalkHistory</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>此项目引用这台计算机上缺少的 NuGet 程序包。使用 NuGet 程序包还原可下载这些程序包。有关详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\cef.redist.x64.3.2623.1401\build\cef.redist.x64.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\cef.redist.x64.3.2623.1401\build\cef.redist.x64.targets'))" />
+    <Error Condition="!Exists('..\packages\cef.redist.x86.3.2623.1401\build\cef.redist.x86.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\cef.redist.x86.3.2623.1401\build\cef.redist.x86.targets'))" />
+    <Error Condition="!Exists('..\packages\CefSharp.Common.49.0.1\build\CefSharp.Common.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\CefSharp.Common.49.0.1\build\CefSharp.Common.props'))" />
+    <Error Condition="!Exists('..\packages\CefSharp.Common.49.0.1\build\CefSharp.Common.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\CefSharp.Common.49.0.1\build\CefSharp.Common.targets'))" />
+    <Error Condition="!Exists('..\packages\CefSharp.WinForms.49.0.1\build\CefSharp.WinForms.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\CefSharp.WinForms.49.0.1\build\CefSharp.WinForms.props'))" />
+    <Error Condition="!Exists('..\packages\System.Data.SQLite.Core.1.0.105.2\build\net40\System.Data.SQLite.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Data.SQLite.Core.1.0.105.2\build\net40\System.Data.SQLite.Core.targets'))" />
+  </Target>
+  <Import Project="..\packages\cef.redist.x64.3.2623.1401\build\cef.redist.x64.targets" Condition="Exists('..\packages\cef.redist.x64.3.2623.1401\build\cef.redist.x64.targets')" />
+  <Import Project="..\packages\cef.redist.x86.3.2623.1401\build\cef.redist.x86.targets" Condition="Exists('..\packages\cef.redist.x86.3.2623.1401\build\cef.redist.x86.targets')" />
+  <Import Project="..\packages\CefSharp.Common.49.0.1\build\CefSharp.Common.targets" Condition="Exists('..\packages\CefSharp.Common.49.0.1\build\CefSharp.Common.targets')" />
+  <Import Project="..\packages\System.Data.SQLite.Core.1.0.105.2\build\net40\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.105.2\build\net40\System.Data.SQLite.Core.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
